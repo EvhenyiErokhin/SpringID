@@ -3,12 +3,14 @@ package JavaConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 
 public class Calculator {
-    private MinusService minusService;
-    private PlusService plusService;
-    public Calculator(MinusService minusService, PlusService plusService){
+    private final MinusService minusService;
+    private final PlusService plusService;
+
+    public Calculator(MinusService minusService, PlusService plusService) {
         this.minusService = minusService;
         this.plusService = plusService;
     }
+
     @Value("${calculator.a}")
     private int a;
     @Value("${calculator.b}")
@@ -31,12 +33,12 @@ public class Calculator {
     public void setB(int b) {
         this.b = b;
     }
-    public void result(){
-        if(a < b){
-            System.out.println(PlusService.servicePlus(getA(), getB()));
-        }
-        else {
-            System.out.println(MinusService.serviceMinus(getA(), getB()));
+
+    public void result() {
+        if (a < b) {
+            System.out.println(plusService.servicePlus(getA(), getB()));
+        } else {
+            System.out.println(minusService.serviceMinus(getA(), getB()));
         }
     }
 }

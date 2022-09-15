@@ -8,15 +8,17 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:calculator-properties")
 public class ConfigurationJava {
     @Bean
-    public PlusService plusService(){
+    public PlusService plusService() {
         return new PlusService();
     }
+
     @Bean
-    public MinusService minusService(){
+    public MinusService minusService() {
         return new MinusService();
     }
+
     @Bean
-    public Calculator calculator(){
-        return  new Calculator(minusService(), plusService());
+    public Calculator calculator() {
+        return new Calculator(minusService(), plusService());
     }
 }
