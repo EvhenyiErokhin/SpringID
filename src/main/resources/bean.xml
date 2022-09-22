@@ -10,11 +10,13 @@
     <context:property-placeholder location="classpath:calculator-properties"/>
     <context:component-scan base-package="AnnotationConfiguration" />
 
+    <bean id="minusService" class="XMLConfiguration.MinusService"/>
 
-    <bean
-            id="result" name="calculator" class="XMLConfiguration.Calculator" >
-        <property name="a" value="${calculator.a}" />
-        <property name="b" value="${calculator.b}" />
+    <bean id="plusService" class="XMLConfiguration.PlusService"/>
+
+    <bean id="calculator" class="XMLConfiguration.Calculator">
+        <constructor-arg type="XMLConfiguration.PlusService" ref="plusService"/>
+        <constructor-arg type="XMLConfiguration.MinusService" ref="minusService"/>
     </bean>
 
 </beans>

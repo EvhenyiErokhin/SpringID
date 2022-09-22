@@ -1,10 +1,10 @@
 package AnnotationConfiguration;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service("plusService")
 public class PlusService {
-    public int servicePlus(int a, int b) {
+    public int plusServ(int a, int b) {
         return a + b;
     }
 }

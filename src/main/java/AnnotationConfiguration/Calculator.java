@@ -1,12 +1,9 @@
 package AnnotationConfiguration;
 
-import JavaConfiguration.MinusService;
-import JavaConfiguration.PlusService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("calculator")
 public class Calculator {
 
     private final MinusService minusService;
@@ -18,35 +15,12 @@ public class Calculator {
         this.plusService = plusService;
     }
 
-    @Value("${calculator.a}")
-    private int a;
-    @Value("${calculator.b}")
-
-    private int b;
-
-
-    public int getA() {
-
-        return a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public int getB() {
-        return b;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    public void result() {
+    public int result(int a, int b) {
         if (a < b) {
-            System.out.println(plusService.servicePlus(getA(), getB()));
+            return plusService.plusServ(a, b);
         } else {
-            System.out.println(minusService.serviceMinus(getA(), getB()));
+            return minusService.minusServ(a, b);
         }
     }
+
 }
